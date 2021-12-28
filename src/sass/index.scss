@@ -1,0 +1,9 @@
+@import "./variables";
+@import "./mixins.scss";
+@import "./base";
+
+// component
+@import "./Components/header";
+@import "./Components/menu";
+@import "./Components/content";
+@import "./Components/add";

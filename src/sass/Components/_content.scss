@@ -1,0 +1,41 @@
+.content{
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    .FormFilter{
+        width: 30%;
+        // display: none;
+        padding: 30px 50px;
+        form{
+            width: 100%;
+            .title{
+                font-size: 25px;
+            }
+            .boxItem{
+                width: 100%;
+                margin: 15px 0;
+                label{
+                    display: block;
+                    color: $main-color;
+                    font-weight: bold;
+                }
+                input{
+                    border: 0;
+                    overflow: hidden;
+                    outline: none;
+                    border-bottom: 2px solid #eaeaea;
+                }
+                .ant-select-selector{
+                    padding: 0;
+                }
+            }
+        }
+    }
+    .ListEmploy{
+        width: 100%;
+    }
+    .ListEmployFilter{
+        width: 70%;
+        
+    }
+}

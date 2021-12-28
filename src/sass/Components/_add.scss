@@ -1,0 +1,16 @@
+.AddEmploy{
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: $main-color;
+    @include flex(center,center);
+    font-size:70px;
+    color: $txt-white;
+    box-shadow: $box-shadow;
+}
+.Add{
+    position: fixed;
+    bottom: 20px;
+    right: 50px;
+    cursor: pointer;
+}

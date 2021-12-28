@@ -1,0 +1,38 @@
+.header{
+    width: 100%;
+    background: #f4f4f4;
+    padding:5px 10px;
+    display: flex;
+    justify-content: space-between;
+    .headerLeft{
+        display: flex;
+        .headerLeftIcon{
+            margin-right: 10px;
+            color: $main-color;
+            font-weight: bold;
+            font-size: 25px;
+            cursor: pointer;
+        }
+        .headerLeftTitle{
+            @include flex(center,center);
+            font-weight:500;
+        }
+    }
+    .headerInnter{
+        text-transform: uppercase;
+        @include flex(center,center);
+        color: $txt-second-color;
+    }
+    .headerRight{
+        @include flex(center,center);
+        .avatar{
+            @include flex(center,center);
+            width: 35px;
+            height: 35px;
+            border-radius:50%;
+            background: $main-color;
+            color: $txt-white;
+            font-weight : 600;
+        }
+    }
+}
