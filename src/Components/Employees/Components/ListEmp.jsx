@@ -39,12 +39,11 @@ const ListEmp = (props) => {
     },
     {
       title: "Name",
-      dataIndex: "name",
       key: "name",
       render: (record) => {
         return (
           <>
-          <Link to="">{record}</Link>
+          <Link to={`/detail/${record.id}`}>{record.name}</Link>
           </>
         );
       },

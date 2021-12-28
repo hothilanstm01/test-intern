@@ -11,6 +11,14 @@ const employeesApi={
         })
         return res
     },
+    GetEmployeesID(id){
+        const url = `/employees/${id}`;
+        const res = axiosClient.get(url)
+        .then(res=>{
+            return res.data;
+        })
+        return res
+    },
 
 };
 

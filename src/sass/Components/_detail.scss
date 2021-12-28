@@ -1,0 +1,53 @@
+.contentDetail {
+  background: #eaeaea;
+  .layout {
+    padding: 30px;
+
+    .detailTop {
+      display: flex;
+      .item {
+        width: 50%;
+        background-color: #fff;
+        
+        .inner {
+          padding: 0 10px;
+          .title {
+            font-size: 20px;
+            font-weight: 600;
+            border-bottom: 2px solid #eaeaea;
+          }
+          .content {
+            padding: 10px 0;
+            .contentTop {
+              display: flex;
+              .avatar {
+                position: relative;
+                .txt{
+                    margin-bottom: 10px;
+                }
+                .avt {
+                  width: max-content;
+                  height: max-content;
+                  border: 10px solid #9999;
+                  border-radius: 50%;
+                }
+                .changeAvt {
+                  width: 30px;
+                  height: 30px;
+                  border-radius: 50%;
+                  @include flex(center, center);
+                  color: $txt-white;
+                  font-size: 35px;
+                  background: $main-color;
+                  position: absolute;
+                  bottom: 0;
+                  cursor: pointer;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
