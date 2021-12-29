@@ -16,6 +16,9 @@
         }
         .total{
             @include flex(center,center);
+            @include tablets {
+                display:none;
+              }
         }
     }
     .menuRight{

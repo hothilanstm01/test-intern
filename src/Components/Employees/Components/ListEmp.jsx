@@ -1,19 +1,25 @@
 import { Avatar, Table } from "antd";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import departmentApi from "../../../api/departmentApi";
 import positionApi from "../../../api/positionApi";
 
 const ListEmp = (props) => {
   const { data } = props;
-  const [positionData, setpositionData] = useState([])
+  const [positionData, setpositionData] = useState([]);
+  const [departmentData, setdepartmentData] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
-        const res = await positionApi.GetPosition();
-        setpositionData(res);
-      };
-      fetchData();
-  }, [])
-
+      const res = await positionApi.GetPosition();
+      setpositionData(res);
+    };
+    fetchData();
+    const fetchDepartment = async () => {
+      const res = await departmentApi.GetDepartment();
+      setdepartmentData(res);
+    };
+    fetchDepartment();
+  }, []);
   const columns = [
     {
       title: "Image",
@@ -43,7 +49,7 @@ const ListEmp = (props) => {
       render: (record) => {
         return (
           <>
-          <Link to={`/detail/${record.id}`}>{record.name}</Link>
+            <Link to={`/detail/${record.id}`}>{record.name}</Link>
           </>
         );
       },
@@ -57,10 +63,9 @@ const ListEmp = (props) => {
       title: "Position",
       key: "position",
       render: (record) => {
-          console.log(record);
         return (
           <>
-          {positionData.id === record.position ? positionData.name : ""}
+            {/* {positionData?positionData.find((item) => (item.id === record.position)).name: null} */}
           </>
         );
       },
@@ -68,11 +73,13 @@ const ListEmp = (props) => {
     {
       title: "Department",
       key: "department",
-    //   dataIndex: "department",
       render: (record) => {
         return (
           <>
-          {record === positionData.id ? positionData.name : ""}
+            {/* {departmentData
+              ? departmentData.find((item) => item.id === record.department)
+                  .name
+              : null} */}
           </>
         );
       },

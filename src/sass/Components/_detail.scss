@@ -2,17 +2,24 @@
   background: #eaeaea;
   .layout {
     padding: 30px;
-
+    @include mobile{
+     padding: 10px;
+    }
     .detailTop {
       display: flex;
+      flex-wrap: wrap;
       .item {
         width: 50%;
         padding: 0 25px;
+        @include large{
+          width: 100%;
+          margin-bottom: 20px;
+        }
         .inner {
           background-color: #fff;
           padding: 0 10px;
           .title {
-            padding-top:5px;
+            padding-top: 5px;
             font-size: 20px;
             font-weight: 600;
             border-bottom: 2px solid #eaeaea;
@@ -21,12 +28,18 @@
             padding: 20px 0;
             .contentTop {
               display: flex;
+              flex-wrap: wrap;
               .avatar {
+                width: 40%;
                 position: relative;
+                @include mobile{
+                  width: 100%;
+                 }
                 .txt {
                   margin-bottom: 20px;
                 }
                 .avt {
+                  width: 100%;
                   width: max-content;
                   height: max-content;
                   border: 10px solid #9999;
@@ -34,27 +47,62 @@
                   margin: 0 20px;
                 }
                 .changeAvt {
-                  width: 30px;
-                  height: 30px;
+                  width: 40px;
+                  height: 40px;
                   border-radius: 50%;
                   @include flex(center, center);
                   color: $txt-white;
-                  font-size: 35px;
+                  font-size: 50px;
                   background: $main-color;
                   position: absolute;
-                  bottom: 0;
+                  bottom: 20px;
                   left: 20px;
                   cursor: pointer;
+                  @include tablets{
+                    left: 25px;
+                    bottom: 50px;
+                    width: 30px;
+                    height: 30px;
+                  }
+                  @include mobile{
+                    left: 20px;
+                    bottom: 0px;
+                    width: 30px;
+                    height: 30px;
+                   }
+                }
+              }
+              .chart{
+                width: 60%;
+                flex-wrap: wrap;
+                @include mobile{
+                  margin-top: 20px;
+                  width: 100%;
+                 }
+                 &_text{
+                   display: block;
+                 }
+                .chartBar{
+                @include flex(center, center);
+
+                  width: 100%!important;
+                  height: 200px!important;
                 }
               }
             }
             .contentBottom {
-              margin-top: 20px;
+              margin-top: 75px;
               margin-bottom: 20px;
               width: 100%;
               display: flex;
+              flex-wrap: wrap;
+              
               .box {
                 width: 25%;
+                @include mobile{
+                  width: 50%;
+                  margin-bottom: 20px;
+                 }
                 .txt {
                   color: $main-color;
                   font-weight: 600;
@@ -71,14 +119,32 @@
             border-bottom: 2px solid #eaeaea;
           }
           &_content {
-            padding-top: 20px;
-            padding-bottom: 10px;
+            padding-top: 10px;
+            padding-bottom: 25px;
             display: flex;
             flex-wrap: wrap;
             .boxItem {
               width: 33.33%;
-              margin-bottom: 25px;
+              margin-bottom: 10px;
+              display: flex;
+              align-items: flex-end;
+              flex-wrap: wrap;
+              @include tablets{
+                width: 50%;
+               }
+               @include mobile{
+                width: 100%;
+               }
+              label {
+                width: 100%;
+                color: $main-color;
+                font-weight: 600;
+                font-size:14px;
+              }
               input {
+                @include mobile{
+                  width: 100%;
+                 }
                 border: 0;
                 overflow: hidden;
                 outline: none;
@@ -88,15 +154,39 @@
           }
         }
         .credentials {
+          .txt {
+            
+            margin-top: 10px;
+            display: flex;
+            justify-content: space-between;
+            h2{
+              font-size:18px;
+            }
+          }
           &_content {
-            padding-top: 20px;
+            // padding-top: 20px;
             padding-bottom: 10px;
             display: flex;
             flex-wrap: wrap;
             .boxItem {
               width: 33.33%;
-              margin-bottom: 25px;
+              margin-bottom: 10px;
+              @include tablets{
+                width: 50%;
+               }
+               @include mobile{
+                width: 100%;
+               }
+              label {
+                font-size:14px;
+                display: block;
+                color: $main-color;
+                font-weight: 600;
+              }
               input {
+                @include mobile{
+                  width: 100%;
+                 }
                 border: 0;
                 overflow: hidden;
                 outline: none;
@@ -110,7 +200,7 @@
     .detailBottom {
       padding: 25px;
       .title {
-          padding-top:10px;
+        padding-top: 10px;
         font-size: 20px;
         font-weight: 600;
         border-bottom: 2px solid #eaeaea;
@@ -120,17 +210,17 @@
         .tabs {
           display: flex;
           padding-bottom: 20px;
-          .tabItem{
+          .tabItem {
             background: $color-second;
-              border:0;
-              color: $txt-white;
-              margin-right: 30px;
-              font-weight: 500;
-              border-radius: 7px;
-              width: 120px;
-              padding: 5px 0;
+            border: 0;
+            color: $txt-white;
+            margin-right: 30px;
+            font-weight: 500;
+            border-radius: 7px;
+            width: 120px;
+            padding: 5px 0;
           }
-          button.active{
+          button.active {
             background: $main-color;
           }
         }

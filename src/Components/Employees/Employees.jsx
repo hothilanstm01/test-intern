@@ -36,7 +36,7 @@ const Employees = () => {
     <>
       <div className="menu">
         <div className="menuLeft">
-          <div className="logo">Employees</div>
+          <div className="logo"><Link to="/">Employees</Link></div>
           <div className="total">{data ? data.length : null} Employees</div>
         </div>
         <div className="menuRight">

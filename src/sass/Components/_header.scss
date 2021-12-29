@@ -22,6 +22,9 @@
         text-transform: uppercase;
         @include flex(center,center);
         color: $txt-second-color;
+        @include mobile{
+            display: none;
+          }
     }
     .headerRight{
         @include flex(center,center);
