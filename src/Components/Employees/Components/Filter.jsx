@@ -35,25 +35,23 @@ const Filter = () => {
   }, [search]);
   const handleChange = (value) => {
     console.log(value);
-    setsearch(value)
-    filterSearch(value)
+    setsearch(value);
+    filterSearch(value);
     // data.filter((item) => item.department === value);
-
-  }
+  };
   const filterSearch = (value) => {
     const lowerCaseValue = value.toLowerCase().trim();
-    if(!lowerCaseValue) {
-      setdata(data)
+    if (!lowerCaseValue) {
+      setdata(data);
+    } else {
+      const filterSearchData = data.filter((item) => {
+        return Object.keys(item).some((key) => {
+          return item[key].toString().toLowerCase().includes(lowerCaseValue);
+        });
+      });
+      setdata(filterSearchData);
     }
-    else{
-      const filterSearchData = data.filter(item => {
-        return Object.keys(item).some(key => {
-          return item[key].toString().toLowerCase().includes(lowerCaseValue)
-        })
-      })
-      setdata(filterSearchData)
-    }
-  }
+  };
   const menu = (
     <Menu>
       <Menu.Item key="0">
@@ -81,14 +79,14 @@ const Filter = () => {
         </div>
         <div className="menuRight">
           <div className="filter">
-            <Dropdown overlay={menu} placement="bottomCenter" arrow>
-              <Link to="/filter">
-                <FilterFilled />
-              </Link>
-            </Dropdown>
+            <Link to="/filter">
+              <FilterFilled />
+            </Link>
           </div>
           <div className="menuList">
-            <MoreOutlined />
+            <Dropdown overlay={menu} placement="bottomLeft" arrow>
+              <MoreOutlined />
+            </Dropdown>
           </div>
         </div>
       </div>
