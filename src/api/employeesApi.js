@@ -19,6 +19,10 @@ const employeesApi={
         })
         return res
     },
+    DelEmployees(id){
+        const url = `/employees/${id}`;
+        return axiosClient.delete(url)
+    },
 
 };
 

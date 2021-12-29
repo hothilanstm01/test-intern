@@ -11,6 +11,14 @@ const positionApi={
         })
         return res
     },
+    GetPositionID(id){
+        const url = `/position/${id}`;
+        const res = axiosClient.get(url)
+        .then(res=>{
+            return res.data;
+        })
+        return res
+    },
 
 };
 

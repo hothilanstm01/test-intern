@@ -1,3 +1,4 @@
+import Delete from "../Components/Delete/Delete";
 import Detal from "../Components/Detal/Detal";
 import Filter from "../Components/Employees/Components/Filter";
 import Employees from "../Components/Employees/Employees";
@@ -16,6 +17,11 @@ const routes = [
   {
     path: "/detail/:id",
     component: Detal,
+    exact: true,
+  },
+  {
+    path: "/del",
+    component: Delete,
     exact: true,
   },
 ];

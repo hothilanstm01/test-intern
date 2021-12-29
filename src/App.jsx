@@ -4,11 +4,13 @@ import RouterWrapper from "./Router/Router";
 
 function App() {
   return (
-    <Router>
-      <Route path="/">
-        <RouterWrapper />
-      </Route>
-    </Router>
+    <>
+      <Router>
+        <Route path="/">
+          <RouterWrapper />
+        </Route>
+      </Router>
+    </>
   );
 }
 

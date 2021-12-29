@@ -10,7 +10,6 @@ import Credentials from "./Components/Credentials";
 const Detal = () => {
   const match = useRouteMatch();
   const [detail, setdetail] = useState({});
-  console.log(match);
   useEffect(() => {
     const id = match.params.id;
     const fetchData = async () => {
@@ -19,7 +18,6 @@ const Detal = () => {
     };
     fetchData(id);
   }, []);
-  console.log(detail);
   const dataSource = [
     {
       key: "1",
@@ -104,7 +102,9 @@ const Detal = () => {
     <>
       <div className="menu">
         <div className="menuLeft">
-          <div className="logo"><Link to="/">Employees</Link></div>
+          <div className="logo">
+            <Link to="/">Employees</Link>
+          </div>
         </div>
       </div>
       {detail ? (
@@ -139,14 +139,7 @@ const Detal = () => {
                         <div className="chart_text">Inspections Completed</div>
                         <Bar
                           data={{
-                            labels: [
-                              "Jan",
-                              "Feb",
-                              "Mar",
-                              "Apr",
-                              "May",
-                              "Jun",
-                            ],
+                            labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
                             datasets: [
                               {
                                 label: "# of Votes",
@@ -157,7 +150,6 @@ const Detal = () => {
                               },
                             ],
                           }}
-                          
                           className="chartBar"
                         />
                       </div>

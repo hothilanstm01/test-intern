@@ -1,9 +1,10 @@
-import { Avatar, Checkbox, Table } from "antd";
+import { Avatar, Button, Table } from "antd";
 import React from "react";
 import { Link } from "react-router-dom";
 
 const ListEmp = (props) => {
   const { data } = props;
+
   const columns = [
     {
       title: "Image",
@@ -57,6 +58,13 @@ const ListEmp = (props) => {
       title: "Email",
       key: "email",
       dataIndex: "email",
+    },
+    {
+      title: "Delete",
+      key: "delete",
+      render: (record) => (
+        <Button onClick={() => props.handleRemove(record.id)}>Xóa</Button>
+      ),
     },
   ];
   return (

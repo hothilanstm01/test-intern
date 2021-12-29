@@ -2,9 +2,17 @@ import { Avatar, Checkbox, Table } from "antd";
 import React from "react";
 import { Link } from "react-router-dom";
 
-const ListEmp = (props) => {
-  const { data } = props;
+const ListEmpSelect = (props) => {
+  const { data} = props;
   const columns = [
+    {
+        key: "show",
+        render: () => (
+          <>
+          <Checkbox/>
+          </>
+        )
+      },
     {
       title: "Image",
       dataIndex: "avatar",
@@ -66,4 +74,4 @@ const ListEmp = (props) => {
   );
 };
 
-export default ListEmp;
+export default ListEmpSelect;

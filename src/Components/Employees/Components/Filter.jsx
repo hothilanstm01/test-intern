@@ -1,17 +1,18 @@
 import React, { useEffect, useState } from "react";
-import { FilterFilled, MoreOutlined } from "@ant-design/icons";
-import { Dropdown, Menu, Select } from "antd";
-import { Link } from "react-router-dom";
+import { Select } from "antd";
 import employeesApi from "../../../api/employeesApi";
 import AddEmploy from "./AddEmploy";
 import ListEmp from "./ListEmp";
 import departmentApi from "../../../api/departmentApi";
+import MenuItem from "../../Menu/Menu";
+import positionApi from "../../../api/positionApi";
 const { Option } = Select;
 const Filter = () => {
   const [data, setdata] = useState([]);
   const [search, setsearch] = useState("");
   const [output, setoutput] = useState([]);
   const [departmentData, setdepartmentData] = useState([]);
+  const [position, setposition] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
       const res = await employeesApi.GetEmployees();
@@ -23,6 +24,12 @@ const Filter = () => {
       setdepartmentData(res);
     };
     fetchDepartment();
+
+    const fetchPosition = async () => {
+      const res = await positionApi.GetPosition();
+      setposition(res);
+    };
+    fetchPosition();
   }, []);
   console.log(data);
   useEffect(() => {
@@ -33,63 +40,25 @@ const Filter = () => {
       }
     });
   }, [search]);
-  const handleChange = (value) => {
+  const handleChangeSearch = (value) => {
     console.log(value);
-    setsearch(value);
-    filterSearch(value);
-    // data.filter((item) => item.department === value);
+    const values = data.filter((item) => item.name === value);
+    setoutput(values);
   };
-  const filterSearch = (value) => {
-    const lowerCaseValue = value.toLowerCase().trim();
-    if (!lowerCaseValue) {
-      setdata(data);
-    } else {
-      const filterSearchData = data.filter((item) => {
-        return Object.keys(item).some((key) => {
-          return item[key].toString().toLowerCase().includes(lowerCaseValue);
-        });
-      });
-      setdata(filterSearchData);
-    }
+  const handleChangeDepartment = (value) => {
+    console.log(value);
+    const values = data.filter((item) => item.department === value);
+    setoutput(values);
   };
-  const menu = (
-    <Menu>
-      <Menu.Item key="0">
-        <Link to="https://www.antgroup.com">Select Columns</Link>
-      </Menu.Item>
-      <Menu.Item key="1">
-        <Link to="https://www.aliyun.com">Download Employees</Link>
-      </Menu.Item>
-      <Menu.Item key="1">
-        <Link to="https://www.aliyun.com">Import Employees</Link>
-      </Menu.Item>
-      <Menu.Item key="1">
-        <Link to="https://www.aliyun.com">Delete Employees</Link>
-      </Menu.Item>
-    </Menu>
-  );
+  const handleChangePosition = (value) => {
+    console.log(value);
+    const values = data.filter((item) => item.position === value);
+    setoutput(values);
+  };
+
   return (
     <>
-      <div className="menu">
-        <div className="menuLeft">
-          <div className="logo">
-            <Link to="/">Employees</Link>
-          </div>
-          <div className="total">{data ? data.length : null} Employees</div>
-        </div>
-        <div className="menuRight">
-          <div className="filter">
-            <Link to="/filter">
-              <FilterFilled />
-            </Link>
-          </div>
-          <div className="menuList">
-            <Dropdown overlay={menu} placement="bottomLeft" arrow>
-              <MoreOutlined />
-            </Dropdown>
-          </div>
-        </div>
-      </div>
+      <MenuItem data={data} />
       <div className="content">
         <div className="FormFilter">
           <form action="">
@@ -100,23 +69,35 @@ const Filter = () => {
                 type="text"
                 placeholder="Employees Name"
                 onChange={(e) => setsearch(e.target.value)}
-                value={search}
               />
             </div>
             <div className="boxItem">
-              <label>Employees ID</label>
-              <input type="text" placeholder="Employees ID" />
+              <label>Position</label>
+              <Select
+                // defaultValue="choice"
+                style={{ width: 190 }}
+                bordered={false}
+                onChange={handleChangePosition}
+                placeholder="Choice"
+              >
+                {position.map((item, index) => (
+                  <Option value={item.name} key={index}>
+                    {item.name}
+                  </Option>
+                ))}
+              </Select>
             </div>
             <div className="boxItem">
               <label>Department</label>
               <Select
-                defaultValue={departmentData.id}
+                // defaultValue={departmentData.id}
                 style={{ width: 190 }}
                 bordered={false}
-                onChange={handleChange}
+                onChange={handleChangeDepartment}
+                placeholder="Choice"
               >
                 {departmentData.map((item, index) => (
-                  <Option value={item.id} key={index}>
+                  <Option value={item.name} key={index}>
                     {item.name}
                   </Option>
                 ))}

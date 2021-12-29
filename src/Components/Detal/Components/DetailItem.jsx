@@ -1,24 +1,9 @@
-import React, { useEffect, useState } from "react";
-import departmentApi from "../../../api/departmentApi";
-import positionApi from "../../../api/positionApi";
+import React from "react";
 
 const DetailItem = (props) => {
-  const { detail } = props;
-  const [positionData, setpositionData] = useState([]);
-  const [departmentData, setdepartmentData] = useState([]);
-  useEffect(() => {
-    const fetchData = async () => {
-      const res = await positionApi.GetPosition();
-      setpositionData(res);
-    };
-    fetchData();
-    const fetchDepartment = async () => {
-      const res = await departmentApi.GetDepartment();
-      setdepartmentData(res);
-    };
-    fetchDepartment();
-  }, []);
+  const { detail, positionData, departmentData } = props;
   console.log(positionData);
+  console.log(departmentData);
   return (
     <div className="detailInfo">
       <div className="inner">
@@ -33,13 +18,7 @@ const DetailItem = (props) => {
           <div className="boxItem">
             <label htmlFor="role">Role</label>
 
-            <input
-              type="text"
-              // value={
-              //   departmentData.find((item) => item.id === detail.department)
-              //     .name
-              // }
-            />
+            <input type="text" value={detail.department} />
           </div>
           <div className="boxItem">
             <input type="text" value={detail.lastname} />
@@ -50,12 +29,7 @@ const DetailItem = (props) => {
           <div className="boxItem">
             <label htmlFor="role">Position</label>
 
-            <input
-              type="text"
-              // value={
-              //   positionData.find((item) => item.id === detail.position).name
-              // }
-            />
+            <input type="text" value={detail.position} />
           </div>
         </div>
       </div>
