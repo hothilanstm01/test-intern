@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
-import ListEmp from "./Components/ListEmp";
 import employeesApi from "../../api/employeesApi";
-import AddEmploy from "./Components/AddEmploy";
+import AddEmploy from "../Employees/Components/AddEmploy";
 import MenuItem from "../Menu/Menu";
+import ListEmp from "./Components/ListEmp";
 
-const Employees = () => {
+
+const SelectTemp = () => {
   const [data, setdata] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
@@ -12,18 +13,13 @@ const Employees = () => {
       setdata(res);
     };
     fetchData();
-
   }, []);
-
   return (
     <>
-      <MenuItem data={data}/>
+      <MenuItem data={data} />
       <div className="content">
         <div className="ListEmploy">
-          
-          <ListEmp
-            data={data}
-          />
+          <ListEmp data={data} />
         </div>
       </div>
       <div className="Add">
@@ -33,4 +29,4 @@ const Employees = () => {
   );
 };
 
-export default Employees;
+export default SelectTemp;
